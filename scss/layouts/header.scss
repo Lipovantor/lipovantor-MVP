@@ -1,0 +1,316 @@
+@import "../variables.scss";
+
+.header {
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  z-index: 200;
+
+  @media (max-width: 1024px) {
+    top: 20px;
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.logo {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+
+  &__svg {
+    height: 34px;
+
+    @media (max-width: 1024px) {
+      height: 20px;
+      width: 100px;
+    }
+
+    &-wrap {
+      height: 34px;
+      padding: 0 10px;
+      background-color: $main-color;
+      opacity: 0;
+      animation: animaLogoSvg .2s linear .3s forwards;
+      border-radius: 20px;
+      border: 1px solid $light-color;
+
+      @keyframes animaLogoSvg {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        height: 22px;
+      }
+    }
+  }
+
+  &:hover {
+    .logo__svg {
+
+      path {
+        transition: all .4s;
+        fill: $main-color;
+      }
+  
+      &-wrap {
+        transition: all .4s;
+        background-color: $light-color;
+        border: 1px solid $main-color;
+      }
+    }
+  }
+
+  &__line {
+    height: 1px;
+    background-color: $light-color;
+    border-top: 1px solid $main-color;
+    box-sizing: content-box;
+
+    &_left {
+      animation: animaLogoLeft .3s linear .1s forwards;
+  
+      @keyframes animaLogoLeft {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 112px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        max-width: 10px;
+      }
+    }
+
+    &_right {
+      animation: animaLogoRight .1s linear .5s forwards;
+  
+      @keyframes animaLogoRight {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 16px;
+        }
+      }
+    }
+  }
+}
+
+.menu-button {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &__wrap {
+    max-width: 114px;
+    display: flex;
+    align-items: center;
+    background-color: $main-color;
+    border-radius: 20px;
+    border: 1px solid $light-color;
+    opacity: 0;
+    animation: animaMenuBurger .2s linear .7s forwards;
+  
+    @keyframes animaMenuBurger {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      border: 0;
+    }
+  }
+
+  &:hover {
+    .burger__line {
+      margin-bottom: 6px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &_active {
+    .burger__line {
+      transform-origin: center;
+      margin: 0;
+
+      &:nth-child(1) {
+        transform: rotate(-45deg);
+      }
+
+      &:nth-child(2) {
+        display: none;
+      }
+
+      &:nth-child(3) {
+        transform: rotate(45deg);
+      }
+    }
+
+    &:hover {
+      .burger__line {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__text {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: "Ruda";
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    color: $light-color;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: animaMenuText .2s linear .5s forwards;
+
+    @keyframes animaMenuText {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  &__line {
+    height: 1px;
+    background-color: $light-color;
+    border-top: 1px solid $main-color;
+    box-sizing: content-box;
+
+    &_left {
+      animation: animaMenuLeft .2s linear .9s forwards;
+
+      @keyframes animaMenuLeft {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 16px;
+        }
+      }
+      
+    }
+
+    &_right {
+      animation: animaMenu .4s linear .1s forwards;
+
+      @keyframes animaMenu {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 170px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        max-width: 10px;
+      }
+    }
+  }
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  margin-left: -1px;
+  border: 1px solid $light-color;
+  border-radius: 50%;
+
+  &__line {
+    width: 20px;
+    height: 1px;
+    background-color: $light-color;
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.main-menu {
+  position: fixed;
+  top: 52px;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  padding: 100px 0;
+  background-color: $main-color;
+  transition: all .4s;
+  transform: translateX(100%);
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 50px 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 30px 0;
+  }
+
+  &_active {
+    transform: translateX(0);
+  }
+
+  &__item {
+    margin-bottom: 100px;
+    text-decoration: none;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    color: $light-color;
+
+    @media (max-width: 1024px) {
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 30px;
+    }
+
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.footer {
+  min-height: 400px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: $third-color;
+
+  &__logo {
+    width: fit-content;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  &__row,
+  a {
+    font-family: "Ruda";
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: .16em;
+    color: $light-color;
+    text-decoration: none;
+    margin-bottom: 30px;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+  }
+}
